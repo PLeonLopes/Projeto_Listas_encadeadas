@@ -9,12 +9,11 @@ public class Main {
         LSSequencial listasequencial = new LSSequencial();                      // cria uma lista sequencial de alunos, usando o LSSequencial
         int escolha = 0;
         Scanner entrada = new Scanner(System.in);
-        String saida = "1";                                                     // Valor inicial que vai ser usado no do-while do case 1
 
-
-        do {
+        do{
             listasequencial.exibirMenu();
             escolha = entrada.nextInt();
+            entrada.nextLine();
 
             switch (escolha) {
                 case 1:
@@ -25,25 +24,27 @@ public class Main {
 
                     LSEncadeada listaDisciplinasTemp = new LSEncadeada();       // cria a lista encadeada, usando o LSEncadeada
 
-                    do {
-
+                    while (true) {
+                        String disciplina;
                         Disciplina disciplinaTemp = new Disciplina();           // instancia para disciplinas
                         System.out.println("Cadastre uma disciplina [0 - SAIR]: ");
-    
-                        saida = entrada.next();                                 // 0 - para de receber disciplina
+
+                        disciplina = entrada.nextLine();                                 // 0 - para de receber disciplina
+                        String saida = disciplina;
                         if (saida.equals("0")) {
                             break;
                         }
                         disciplinaTemp.nome = saida;
-    
+
                         System.out.println("Nota da disciplina: ");           
                         disciplinaTemp.nota = entrada.nextFloat();
-    
-                        listaDisciplinasTemp.inserirNoInicio(disciplinaTemp);   // guarda a nota
+                        entrada.nextLine();
 
-                    } while (saida != "0");
+                        listaDisciplinasTemp.inserirNoInicio(disciplinaTemp); // guarda a nota
+                    }
+                    
                     alunoTemp.disciplinas = listaDisciplinasTemp;
-				    listasequencial.inserirAlunoOrdenado(alunoTemp);            // guarda as informações na lista
+                    listasequencial.inserirAlunoOrdenado(alunoTemp); // guarda as informações na lista
                     break;
                 case 2:
                     System.out.println("Informe o RGM para busca: ");
@@ -78,19 +79,7 @@ public class Main {
                 default:
                     break;
             }
-
-
-
-
-
-
-
-
-            
-
-
-        } while (escolha != 5);
-
+        }while(escolha != 5);
 
 
 

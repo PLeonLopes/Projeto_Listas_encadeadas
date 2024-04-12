@@ -60,6 +60,38 @@ public class LSSequencial {
         }
 	}
 
+    public Aluno removerAluno(String rgm) {                     // Função para remover aluno da lista
+		if (buscarPorRgm(rgm) == null) {                        // checa se rgm é nulo
+			System.out.println("Não é possível remover aluno inexistente.");
+			return null;
+		}
+		int pos = retornarPosicao(buscarPorRgm(rgm));           // pega a posição do rgm digitado
+
+		if ((pos > tamanho) || (pos < 0)) {                     // se a posição do rgm não for válida, retorna nulo
+            return null;
+        }
+        // operações de remoção em uma lista
+		Aluno aux = alunos[pos];
+		deslocarParaEsquerda(pos);
+		aux.disciplinas.primeiro = null;
+		aux.disciplinas.ultimo = null;
+		aux.disciplinas.tamanho = 0;
+		tamanho--;
+		return aux;
+	}
+
+    public Aluno buscarPorRgm(String rgm) {                     // Função para buscarAluno por rgm (auxilia a função remover aluno)
+		for (int i = 0; i <= tamanho; i++) {                    // roda a lista
+			if (alunos[i] != null) {                            // checa se a posição não é nula
+				if (alunos[i].rgm.equals(rgm)) {                
+					return alunos[i];                           // acha o aluno
+				}
+			}
+
+		}
+		return null;
+	}
+
     public void exibirLista() {                                 // Função para printar a lista de alunos e rgms
 		for (int i = 0; i < tamanho; i++)
 			System.out.println(
@@ -67,7 +99,30 @@ public class LSSequencial {
             "\nRGM: " + alunos[i].rgm);
 	}
 
-    public void creditos() {
+    public int getPosicaoOrdenada(String rgm) {                 // Função para obter a posição de determinado rgm
+		int i;
+		for (i = 0; i < tamanho; i++) {                         // intera toda a lista de alunos
+			if ((alunos[i].rgm).compareTo(rgm) > 0) {           // compara o rgm do aluno com o rgm fornecido
+				return i;                                       // retorna o índice do rgm
+			}
+		}
+		return i;
+	}
+
+    public void inserirAlunoOrdenado(Aluno a1) {                // adicionar um aluno na lista de forma ordenada
+		if (estaCheia()) {                                      // checa se está cheia
+			System.out.println("A lista está cheia.");
+			return;
+		} else if (estaVazia()) {                               // se vazia, entra na primeira posição
+			this.inserirAluno(0, a1);                       
+		} else {
+			this.inserirAluno(getPosicaoOrdenada(a1.rgm), a1);  // organiza em ordem
+		}
+
+	}
+
+    // FUNÇÃO PRA PRINTAR CRÉDITOS
+    public void creditos() {    
         String[] equipe = {"Pedro Lucas Targino Felipe da Silva", "Pedro Nícollas Pereira Leon Lopes", "Ricardo Silva Flores", "Victor Hugo Barbosa Vasconcelos", "Wellington Araújo Ferreira Junior"};
 
         System.out.println("\nNomes dos integrantes da equipe:");
@@ -77,5 +132,17 @@ public class LSSequencial {
         System.out.println();        
     }
 
+    // FUNÇÃO PARA MENU DE ESCOLHAS
+    public void exibirMenu() {
+        System.out.println("=========== Menu ===========");
+        System.out.println("1. Cadastrar aluno");
+        System.out.println("2. Buscar aluno via RGM");
+        System.out.println("3. Mostrar todos os alunos");
+        System.out.println("4. Remover um aluno");
+        System.out.println("5. Créditos");
+        System.out.println("6. Sair");
+        System.out.println("============================");
+        System.out.println("Escolha uma opção: ");
+    }
 
 }

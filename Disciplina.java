@@ -2,8 +2,8 @@ package Projeto;
 
 public class Disciplina {
 
-	String nome;            // NOME do aluno
-	int nota;				// NOTA do aluno
+	String nome;            // NOME da disciplina
+	float nota;				// NOTA do aluno
     Disciplina proximo;     // APONTA para o próximo nó da lista
 
 

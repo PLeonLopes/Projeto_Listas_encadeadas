@@ -95,7 +95,7 @@ public class LSSequencial {
     public void exibirLista() {                                 // Função para printar a lista de alunos e rgms
 		for (int i = 0; i < tamanho; i++)
 			System.out.println(
-            "\nAluno " + (i + 1) +
+            "\nAluno " + (i + 1) +": " +
             "\nRGM: " + alunos[i].rgm);
 	}
 
@@ -125,7 +125,7 @@ public class LSSequencial {
     public void creditos() {    
         String[] equipe = {"Pedro Lucas Targino Felipe da Silva", "Pedro Nícollas Pereira Leon Lopes", "Ricardo Silva Flores", "Victor Hugo Barbosa Vasconcelos", "Wellington Araújo Ferreira Junior"};
 
-        System.out.println("\nNomes dos integrantes da equipe:");
+        System.out.println("\nIntegrantes da equipe:");
         for (String nome : equipe) {
             System.out.println("- " + nome);
         }
@@ -134,7 +134,7 @@ public class LSSequencial {
 
     // FUNÇÃO PARA MENU DE ESCOLHAS
     public void exibirMenu() {
-        System.out.println("=========== Menu ===========");
+        System.out.println("\n=========== Menu ===========");
         System.out.println("1. Cadastrar aluno");
         System.out.println("2. Buscar aluno via RGM");
         System.out.println("3. Mostrar todos os alunos");
@@ -142,7 +142,7 @@ public class LSSequencial {
         System.out.println("5. Créditos");
         System.out.println("6. Sair");
         System.out.println("============================");
-        System.out.println("Escolha uma opção: ");
+        System.out.printf("Escolha uma opção: ");
     }
 
 }

@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
      
-        LSSequencial listasequencial = new LSSequencial();   
-        LSEncadeada listaencadeada = new LSEncadeada();                   // cria uma lista sequencial de alunos, usando o LSSequencial
+        LSSequencial listasequencial = new LSSequencial();          // cria uma lista sequencial de alunos, usando o LSSequencial
+        LSEncadeada listaencadeada = new LSEncadeada();                   
         int escolha = 0;
         Scanner entrada = new Scanner(System.in);
 
@@ -17,17 +17,17 @@ public class Main {
             entrada.nextLine();
 
             switch (escolha) {
-                case 1:
+                case 1: // Cadastrar aluno
                     System.out.println("Cadastrando aluno.");
-                    Aluno alunoTemp = new Aluno();                              // instancia para novo aluno
+                    Aluno alunoTemp = new Aluno();                                      // instancia para novo aluno
                     System.out.println("Informe o RGM: ");
-                    alunoTemp.rgm = entrada.nextLine();                         // recebe 
+                    alunoTemp.rgm = entrada.nextLine();
 
-                    LSEncadeada listaDisciplinasTemp = new LSEncadeada();       // cria a lista encadeada, usando o LSEncadeada
+                    LSEncadeada listaDisciplinasTemp = new LSEncadeada();               // cria a lista encadeada, usando o LSEncadeada
 
                     while (true) {
                         String disciplina;
-                        Disciplina disciplinaTemp = new Disciplina();           // instancia para disciplinas
+                        Disciplina disciplinaTemp = new Disciplina();                   // instancia para disciplinas
                         System.out.println("Cadastre uma disciplina [0 - SAIR]: ");
 
                         disciplina = entrada.nextLine();                                 // 0 - para de receber disciplina
@@ -37,7 +37,7 @@ public class Main {
                         }
                         disciplinaTemp.nome = saida;
 
-                        System.out.println("Nota da disciplina: ");           
+                        System.out.println("Nota da disciplina: ");                     
                         disciplinaTemp.nota = entrada.nextFloat();
                         entrada.nextLine();
 
@@ -47,7 +47,7 @@ public class Main {
                     alunoTemp.disciplinas = listaDisciplinasTemp;
                     listasequencial.inserirAlunoOrdenado(alunoTemp); // guarda as informações na lista
                     break;
-                case 2:
+                case 2: // Buscar aluno via RGM
                     System.out.println("Informe o RGM para busca: ");
                     String i = entrada.nextLine();
 
@@ -60,31 +60,27 @@ public class Main {
                         System.out.println("Aluno não está na lista");
                     }
                     break;
-
-                case 3:
-                    listasequencial.exibirLista();
-                    listaencadeada.exibirLista();
+                case 3: // Mostrar todos os alunos
+                    for (int y = 0; y < listasequencial.tamanho; y++) {
+                        System.out.println("\nRGM: " + listasequencial.alunos[y].getRgm() + "\nDisciplina: \n ");
+                        listasequencial.alunos[y].disciplinas.exibirLista();
+                    }
                     break;
-                
-                case 4:
+                case 4: // Remover um aluno
                     System.out.printf("Digite o RGM do aluno a ser Apagado: ");
                     String rgm = entrada.nextLine();
                     listasequencial.removerAluno(rgm);
                     break;
-                
-                case 5:
+                case 5: // Créditos
                     listasequencial.creditos();
                     break;
-                
-                case 6:
-                    System.out.println("Saindo...");
+                case 6: // Sair
+                    System.out.println("Programa Encerrado.");
                     break;
-
                 default:
                     System.out.println("Entrada Inválida. Tente Novamente.");
             }
-        }while(escolha != 6);
-
+        } while(escolha != 6);
         entrada.close(); // Liberação da memória do Scanner
     }
 }

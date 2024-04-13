@@ -39,12 +39,12 @@ public class LSEncadeada {
 
     public void exibirLista() {                             // Função para exibir lista encadeda (disciplinas)
 		Disciplina temp = primeiro;                         // SE LISTA NÃO ESTIVER VAZIA
-		if(!estaVazia()){
+		if (!estaVazia()) {
 			for (int i = 0; i < tamanho; i++) {
-				System.out.println("Disciplinas: " + temp.nome + "\nNotas: " + temp.nota); // O loop passa pelas disciplinas e printa
+				System.out.println("\nDisciplina: " + temp.nome + "\nNota: " + temp.nota); // O loop passa pelas disciplinas e printa
 				temp = temp.proximo;
 			}
-		}else{
+		} else {
 			System.out.println("Não há Disciplinas.");
 		}
 	}

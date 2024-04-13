@@ -6,7 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
      
-        LSSequencial listasequencial = new LSSequencial();                      // cria uma lista sequencial de alunos, usando o LSSequencial
+        LSSequencial listasequencial = new LSSequencial();   
+        LSEncadeada listaencadeada = new LSEncadeada();                   // cria uma lista sequencial de alunos, usando o LSSequencial
         int escolha = 0;
         Scanner entrada = new Scanner(System.in);
 
@@ -61,41 +62,29 @@ public class Main {
                     break;
 
                 case 3:
-                    
+                    listasequencial.exibirLista();
+                    listaencadeada.exibirLista();
                     break;
                 
                 case 4:
-                    
+                    System.out.printf("Digite o RGM do aluno a ser Apagado: ");
+                    String rgm = entrada.nextLine();
+                    listasequencial.removerAluno(rgm);
                     break;
                 
                 case 5:
-                    
+                    listasequencial.creditos();
                     break;
                 
                 case 6:
-
+                    System.out.println("Saindo...");
                     break;
-            
+
                 default:
-                    break;
+                    System.out.println("Entrada Inválida. Tente Novamente.");
             }
-        }while(escolha != 5);
+        }while(escolha != 6);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // listasequencial.creditos();
+        entrada.close(); // Liberação da memória do Scanner
     }
-
 }

@@ -1,5 +1,3 @@
-package Projeto;
-
 public class Aluno {
 
     String rgm;                     // RGM DO ALUNO

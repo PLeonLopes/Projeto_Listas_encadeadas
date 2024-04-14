@@ -1,5 +1,3 @@
-package Projeto;
-
 public class LSSequencial {
     
     Aluno[] alunos = new Aluno[60];             // Criação de um array de 60 posições, do tipo Aluno

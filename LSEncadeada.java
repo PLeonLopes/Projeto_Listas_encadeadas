@@ -1,5 +1,3 @@
-package Projeto;
-
 public class LSEncadeada {
  
     Disciplina primeiro = null;

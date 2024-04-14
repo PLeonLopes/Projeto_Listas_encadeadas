@@ -1,5 +1,3 @@
-package Projeto;
-
 public class Disciplina {
 
 	String nome;            // NOME da disciplina

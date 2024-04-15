@@ -39,7 +39,7 @@ public class LSEncadeada {
 		Disciplina temp = primeiro;                         // SE LISTA NÃO ESTIVER VAZIA
 		if (!estaVazia()) {
 			for (int i = 0; i < tamanho; i++) {
-				System.out.println("\nDisciplina: " + temp.nome + "\nNota: " + temp.nota); // O loop passa pelas disciplinas e printa
+				System.out.println("Disciplina: " + temp.nome + "\nNota: " + temp.nota); // O loop passa pelas disciplinas e printa
 				temp = temp.proximo;
 			}
 		} else {

@@ -90,13 +90,6 @@ public class LSSequencial {
 		return null;
 	}
 
-    public void exibirLista() {                                 // Função para printar a lista de alunos e rgms
-		for (int i = 0; i < tamanho; i++)
-			System.out.println(
-            "\nAluno " + (i + 1) +": " +
-            "\nRGM: " + alunos[i].rgm);
-	}
-
     public int getPosicaoOrdenada(String rgm) {                 // Função para obter a posição de determinado rgm
 		int i;
 		for (i = 0; i < tamanho; i++) {                         // intera toda a lista de alunos
@@ -118,6 +111,16 @@ public class LSSequencial {
 		}
 
 	}
+
+    public boolean rgmExistente(String alunoRGM) {              // checa se o RGM a ser cadastrado já existe 
+        for (int i = 0; i < tamanho; i++) {                     
+            if (alunos[i] != null && alunos[i].getRgm().equals(alunoRGM)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     // FUNÇÃO PRA PRINTAR CRÉDITOS
     public void creditos() {    

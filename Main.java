@@ -17,8 +17,12 @@ public class Main {
                 case 1: // Cadastrar aluno
                     System.out.println("Cadastrando aluno.");
                     Aluno alunoTemp = new Aluno();                                      // instancia para novo aluno
-                    System.out.println("Informe o RGM: ");
+                    System.out.println("Informe o RGM: ");                            
                     alunoTemp.rgm = entrada.nextLine();
+                    if (alunoTemp.rgm == ""){                                           // Checa se o RGM é vazio
+                        System.out.println("Insira o RGM.");
+                        break;
+                    }
                     @SuppressWarnings("unused") String alunoRGM = alunoTemp.rgm;
 
                     if (listasequencial.rgmExistente(alunoTemp.getRgm())) {             // caso rgm já existente
@@ -35,6 +39,10 @@ public class Main {
                         System.out.println("Cadastre uma disciplina [0 - SAIR]: ");
 
                         disciplina = entrada.nextLine();                                 // 0 - para de receber disciplina
+                        if (disciplina == "") {
+                            System.out.println("Insira uma Disciplina.");              // Checa se a disciplina é vazia
+                            break;
+                        }
                         String saida = disciplina;
                         if (saida.equals("0")) {
                             break;

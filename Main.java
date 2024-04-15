@@ -4,8 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
      
-        LSSequencial listasequencial = new LSSequencial();          // cria uma lista sequencial de alunos, usando o LSSequencial
-        LSEncadeada listaencadeada = new LSEncadeada();                   
+        LSSequencial listasequencial = new LSSequencial();          // cria uma lista sequencial de alunos, usando o LSSequencial               
         int escolha = 0;
         Scanner entrada = new Scanner(System.in);
 
@@ -20,6 +19,13 @@ public class Main {
                     Aluno alunoTemp = new Aluno();                                      // instancia para novo aluno
                     System.out.println("Informe o RGM: ");
                     alunoTemp.rgm = entrada.nextLine();
+                    @SuppressWarnings("unused") String alunoRGM = alunoTemp.rgm;
+
+                    if (listasequencial.rgmExistente(alunoTemp.getRgm())) {             // caso rgm já existente
+                        System.out.println("RGM já cadastrado.");
+                        break;
+                    }
+                    
 
                     LSEncadeada listaDisciplinasTemp = new LSEncadeada();               // cria a lista encadeada, usando o LSEncadeada
 
@@ -59,9 +65,11 @@ public class Main {
                     }
                     break;
                 case 3: // Mostrar todos os alunos
+                    int cont = 1;
                     for (int y = 0; y < listasequencial.tamanho; y++) {
-                        System.out.println("\nRGM: " + listasequencial.alunos[y].getRgm() + "\nDisciplina: \n ");
+                        System.out.println("\nAluno "+ cont +":\nRGM: " + listasequencial.alunos[y].getRgm());
                         listasequencial.alunos[y].disciplinas.exibirLista();
+                        cont++;
                     }
                     break;
                 case 4: // Remover um aluno
